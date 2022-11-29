@@ -6,8 +6,8 @@ var sass = require('sass');
 
 function render(resume) {
     // Load css and template
-    var css = sass.compile(__dirname + "/css/style.css");
-    var template = fs.readFileSync(__dirname + "/resume.template", "utf-8");
+    var css = sass.compile(__dirname + "/css/style.scss");
+    var template = fs.readFileSync(__dirname + "/resume.handlebars", "utf-8");
     // Load print-specific css
     var print = fs.readFileSync(__dirname + "/css/print.css", "utf-8");
 

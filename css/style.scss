@@ -1,26 +1,19 @@
+@use 'reset';
+@use "work-listing";
+
+* {
+  font-family: "Open Sans";
+  font-weight: 300;
+}
+
 body, html {
   padding-top:2.5em;
   margin:0;
-  background-color:#fafafa;
+  background-color: #fafafa;
 }
 
-.note {
-  display:block;
-  position: absolute;
-  top:10px;
-  left:10px;
-
-  font-family: "Open Sans";
-  font-size: 0.6em;
-}
-
-.new {
-  background-color: #81C784;
-
-  border: 1px solid #757575;
-  padding: 1px;
-  border-radius: 4px;
-
+h1 {
+  font-size: 1.4em;
 }
 
 /* Header */
@@ -108,7 +101,7 @@ header p, header h1 {
   background-color:white;
   width:60%;
   
-  padding:0.5em 0 0.5em 0;
+  padding:0.5em 5em;
   
   border-top: 1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
@@ -142,17 +135,6 @@ header p, header h1 {
   margin-bottom: 2em;
 }
 
-body > div > article > div > section:last-child {
-  padding-bottom:1.5em;
-}
-
-.row {
-    display:table-row;
-}
-section h2, .row div {
-    display:table-cell;
-}
-
 section h2, .content-cat {
   font-family: "Merriweather";
   font-variant:small-caps;
@@ -163,11 +145,29 @@ section h2, .content-cat {
   
   font-size:0.975em;
   
-  text-align:center;
   vertical-align:middle;
 
-  padding-left:6.66%;
   width:30%;
+}
+
+h2 { 
+  padding-bottom: 0.75em;
+}
+
+.duration {
+  font-family: "Merriweather";
+  font-variant: small-caps;
+  font-weight: 300;
+  
+  font-size: 0.75em;
+
+  border-right: 1px solid #e0e0e0;
+  padding-right: 0.2em;
+}
+
+h3 {
+  font-family: Merriweather;
+  padding-bottom: 0.5em;
 }
 
 .content-cat p {
@@ -177,16 +177,11 @@ section h2, .content-cat {
   margin-bottom:0;
 }
 
-.content-text {
-  border-left:1px solid #e0e0e0;
-  transition: border 0.66s ease-in;
-}
-
 .big-text {
   vertical-align:top;
 }
 
-.content-text ul {
+#contact ul {
   padding:0;
   margin:0;
   margin-top:0.15em;
@@ -195,20 +190,19 @@ section h2, .content-cat {
   margin-left:1.5em;
 }
 
-.content-text ul:last-child {
-  margin-bottom:0.5em;
+#contact ul:last-child {
+  margin-bottom: 0.5em;
 }
 
-.content-text ul li {
-  font-family: "Open Sans";
-  font-size:0.7em;
+#contact ul li {
+  font-size:0.8em;
   
   display:inline-block;
   vertical-align: top;
   
 }
 
-.content-text ul li:first-child {
+#contact ul li:first-child {
   width:35%;
   
   color: #424242;
@@ -216,43 +210,31 @@ section h2, .content-cat {
   font-weight:600;
 }
 
-.content-text ul li a, div.content-text.work-listing.education-listing > p > strong > a {
+#contact ul li a {
   text-decoration: none;
   color: #0277bd;
 }
 
-.content-text ul li a:hover {
+#contact ul li a:hover {
   color:#4fc3f7;
 }
 
-.work-listing p {
-  font-family: "Open Sans";
-  font-size:0.7em;
-  
-  color: #424242;
-  
-  margin-left:2em;
-  margin-top:0.45em;
-  margin-bottom: 0.45em;
+#education > ul > li {
+  display: grid;
+  grid-template: 
+    "duration degree" auto
+    "duration institution" auto
+    / 1fr 3fr;
+  grid-column-gap: 0.5em;
 }
-
-div.content-text.work-listing.education-listing > p:nth-child(2) {
-  margin-top:0.25em;
+#education .degree {
+  grid-area: degree;
 }
-
-.work-listing .highlight {
-  font-family: "Open Sans";
-  font-size:0.7em;
-  font-weight:400;
-  
-  color: #424242;
-  
-  margin-left:3.25em;
-  
-  list-style-type: disc;
-  list-style-position: inside;
-  display: list-item;
-  
+#education .duration {
+  grid-area: duration;
+}
+#education .institution {
+  grid-area: institution;
 }
 
 .education-listing > .heading {
@@ -275,9 +257,13 @@ div.content-text.work-listing.education-listing > p:nth-child(2) {
   font-weight: normal;
 }
 
-section#work-history section:not(:first-child), .education-content {
-  padding-top: .75em;
+section#work-history section, #education li {
   page-break-inside: avoid;
+  padding-bottom: 0.75em;
+
+  :last-child {
+    padding-bottom: 0;
+  }
 }
 
 section.content.education-content > div > div.content-cat {
