@@ -78,7 +78,7 @@ header {
   margin-left:1em;
 }
 
-header p {
+header p, header h1 {
   text-align:center;
   font-family: "Merriweather";
   
@@ -149,11 +149,11 @@ body > div > article > div > section:last-child {
 .row {
     display:table-row;
 }
-.row div {
+section h2, .row div {
     display:table-cell;
 }
 
-.content-cat {
+section h2, .content-cat {
   font-family: "Merriweather";
   font-variant:small-caps;
   font-weight:300;
@@ -204,6 +204,7 @@ body > div > article > div > section:last-child {
   font-size:0.7em;
   
   display:inline-block;
+  vertical-align: top;
   
 }
 
@@ -274,7 +275,7 @@ div.content-text.work-listing.education-listing > p:nth-child(2) {
   font-weight: normal;
 }
 
-.work-content, .education-content {
+section#work-history section:not(:first-child), .education-content {
   padding-top: .75em;
   page-break-inside: avoid;
 }
@@ -293,7 +294,7 @@ div.content-text.skills-listing > p {
   margin-bottom: 0.45em;
 }
 
-div.content-text.skills-listing > p > {
+div.content-text.skills-listing > p {
   color:#212121;
 }
 

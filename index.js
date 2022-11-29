@@ -1,9 +1,12 @@
 var fs = require("fs");
 var Handlebars = require("handlebars");
+var parseISO = require('date-fns/parseISO')
+var format = require('date-fns/format')
+var sass = require('sass');
 
 function render(resume) {
     // Load css and template
-    var css = fs.readFileSync(__dirname + "/css/style.css", "utf-8");
+    var css = sass.compile(__dirname + "/css/style.css");
     var template = fs.readFileSync(__dirname + "/resume.template", "utf-8");
     // Load print-specific css
     var print = fs.readFileSync(__dirname + "/css/print.css", "utf-8");
@@ -52,9 +55,13 @@ function render(resume) {
     Handlebars.registerHelper('commalist', function(items, options) {
         return options.fn(items.join(', '));
     });
+
+    Handlebars.registerHelper("formatDate", function(dateStr) {
+        return format(parseISO(dateStr), "MMMM yyyy")
+    })
     // Compile
     return Handlebars.compile(template)({
-        css: css,
+        css: css.css,
         print: print,
         resume: resume
     });

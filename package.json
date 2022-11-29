@@ -9,14 +9,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.5.3"
+    "date-fns": "^2.29.3",
+    "handlebars": "^4.5.3",
+    "sass": "^1.56.1"
   },
   "homepage": "https://github.com/TimDaub/jsonresume-theme-paper",
   "main": "index.js",
   "scripts": {
     "start": "resume serve"
   },
-  "devDependencies": {},
   "keywords": [
     "jsonresume",
     "json",

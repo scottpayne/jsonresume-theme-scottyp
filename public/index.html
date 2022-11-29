@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+  <title>Scott Payne</title>
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <style>body, html {
+  padding-top: 2.5em;
+  margin: 0;
+  background-color: #fafafa;
+}
+
+.note {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: "Open Sans";
+  font-size: 0.6em;
+}
+
+.new {
+  background-color: #81C784;
+  border: 1px solid #757575;
+  padding: 1px;
+  border-radius: 4px;
+}
+
+/* Header */
+header {
+  width: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.header-content {
+  display: inline-block;
+}
+
+.pic {
+  margin: 0 auto;
+  margin-top: -2.5em;
+  border-radius: 10em;
+  height: 4em;
+  width: 4em;
+  border: 2px solid #e0e0e0;
+  transition: all 0.5s linear;
+}
+
+@-webkit-keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.pic:hover {
+  /*Webkit fix*/
+  -webkit-transform: translateZ(0);
+  cursor: pointer;
+  -webkit-animation: wiggle 0.7s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.header-text {
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+header p, header h1 {
+  text-align: center;
+  font-family: "Merriweather";
+  margin: 0;
+  color: #212121;
+}
+
+.first-name {
+  font-size: 1.05em;
+}
+
+.subtitle {
+  font-family: "Merriweather";
+  padding-top: 0.3em;
+  font-size: 0.55em;
+  font-weight: 500;
+  color: #424242;
+}
+
+/* Information */
+.paper {
+  margin: 0 auto;
+  margin-bottom: 1em;
+  background-color: white;
+  width: 60%;
+  padding: 0.5em 0 0.5em 0;
+  border-top: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 3px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+@media (max-width: 992px) {
+  .paper {
+    width: 80%;
+  }
+}
+/* Content Part */
+.content-wrapper {
+  padding-right: 7.25%;
+}
+
+.content {
+  display: table;
+  width: 100%;
+  padding-top: 1.5em;
+  /*border-top: 1px solid #eeeeee;*/
+}
+
+.content:last-child {
+  margin-bottom: 2em;
+}
+
+body > div > article > div > section:last-child {
+  padding-bottom: 1.5em;
+}
+
+.row {
+  display: table-row;
+}
+
+section h2, .row div {
+  display: table-cell;
+}
+
+section h2, .content-cat {
+  font-family: "Merriweather";
+  font-variant: small-caps;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #212121;
+  font-size: 0.975em;
+  text-align: center;
+  vertical-align: middle;
+  padding-left: 6.66%;
+  width: 30%;
+}
+
+.content-cat p {
+  font-size: 0.55em;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.content-text {
+  border-left: 1px solid #e0e0e0;
+  transition: border 0.66s ease-in;
+}
+
+.big-text {
+  vertical-align: top;
+}
+
+.content-text ul {
+  padding: 0;
+  margin: 0;
+  margin-top: 0.15em;
+  width: 85%;
+  margin-left: 1.5em;
+}
+
+.content-text ul:last-child {
+  margin-bottom: 0.5em;
+}
+
+.content-text ul li {
+  font-family: "Open Sans";
+  font-size: 0.7em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.content-text ul li:first-child {
+  width: 35%;
+  color: #424242;
+  font-weight: 600;
+}
+
+.content-text ul li a, div.content-text.work-listing.education-listing > p > strong > a {
+  text-decoration: none;
+  color: #0277bd;
+}
+
+.content-text ul li a:hover {
+  color: #4fc3f7;
+}
+
+.work-listing p {
+  font-family: "Open Sans";
+  font-size: 0.7em;
+  color: #424242;
+  margin-left: 2em;
+  margin-top: 0.45em;
+  margin-bottom: 0.45em;
+}
+
+div.content-text.work-listing.education-listing > p:nth-child(2) {
+  margin-top: 0.25em;
+}
+
+.work-listing .highlight {
+  font-family: "Open Sans";
+  font-size: 0.7em;
+  font-weight: 400;
+  color: #424242;
+  margin-left: 3.25em;
+  list-style-type: disc;
+  list-style-position: inside;
+  display: list-item;
+}
+
+.education-listing > .heading {
+  font-weight: 600;
+  margin-top: 0.75em;
+  margin-left: 2em;
+}
+
+.education-listing > .highlight {
+  margin-left: 3.25em;
+}
+
+.highlight {
+  transition: border 0.33s ease-in;
+}
+
+.profiles-listing ul li, .profiles-listing ul li:first-child {
+  width: 32%;
+  font-weight: normal;
+}
+
+section#work-history section:not(:first-child), .education-content {
+  padding-top: 0.75em;
+  page-break-inside: avoid;
+}
+
+section.content.education-content > div > div.content-cat {
+  vertical-align: top;
+}
+
+div.content-text.skills-listing > p {
+  font-family: "Open Sans";
+  font-size: 0.7em;
+  font-weight: 400;
+  margin-left: 2em;
+  margin-top: 0.45em;
+  margin-bottom: 0.45em;
+}
+
+div.content-text.skills-listing > p {
+  color: #212121;
+}
+
+@media screen and (max-width: 600px) {
+  body, html {
+    padding-top: 30px;
+  }
+  .paper {
+    width: 95%;
+  }
+  .row div {
+    display: block;
+  }
+  .content-cat {
+    width: 100%;
+  }
+  .content-text ul li {
+    width: 100%;
+  }
+  .content-text ul li:first-child {
+    width: 100%;
+  }
+  .education-listing > .highlight {
+    margin-left: 30px;
+  }
+}</style>
+  <style media="print">
+body, html {
+  background-color: white;
+  padding-top: 1.5em;
+  font-size: 104%;
+}
+
+.paper {
+  width:100%;
+  border: 0;
+
+  padding-top: 0;
+}
+
+header p {
+  font-size: 1.3em;
+}
+
+.subtitle {
+  font-size: 0.7em;
+}
+
+.header-pic {
+  float:left;
+}
+
+.profiles {
+  display:none;
+}
+
+.content {
+  page-break-inside:avoid; 
+  page-break-after:auto;
+}
+
+.header-text {
+  float:left;
+  margin-top: -1.6em;
+}
+
+.content-wrapper > .content:first-child {
+  padding-top: 2em;
+}
+
+.content:last-child {
+  padding-bottom: 0;
+}
+
+.content-cat {
+  width:33%;
+  color:black;
+  text-align: left;
+}
+
+.content-cat p {
+  font-size:0.6em;
+  font-weight: 600;
+}
+
+header p, .content-text, .work-listing p, .content-text ul li:first-child, .work-listing .highlight, .content-text.skills-listing > ul > li > .highlight {
+  color:black;
+}
+
+.content-text.skills-listing > ul > li span, .subtitle {
+  color:#212121;
+}
+
+.content-text ul:last-child {
+  margin-bottom: 0.25em;
+}
+
+.content-text ul li:first-child {
+  width:50%;
+}
+
+.profiles-listing ul li:first-child {
+  width:32%;
+}
+
+div.content-text.skills-listing > ul > li {
+  width:33%;
+}
+
+.work-listing p {
+  margin-bottom: 0.1em;
+}
+
+div.content-text.skills-listing > ul > li > p {
+  margin-top: 0.4em;
+  margin-bottom: 0.5em;
+}
+
+div.content-text.skills-listing > ul > li {
+  padding-left: 1.5em;
+}
+
+div.content-text.skills-listing > ul > li:first-child {
+  padding-left: 2em;
+}
+
+.note {
+  display:none;
+}
+
+.content-text:hover {
+  border-left:1px solid #eeeeee;
+}
+
+.content-text ul li a:hover {
+  color:#4fc3f7;
+}
+
+.highlight:hover, .content-text.skills-listing > ul > li > .highlight:hover {
+  border-left:1px solid #eeeeee;
+}
+
+.big-text {
+  padding-top: 0;
+}
+</style>
+</head>
+<body>
+  <article class="paper">
+      <header>
+        <div class="header-content">
+          <div class="header-text">
+            <h1>
+              Scott Payne
+            </h1>
+          </div>
+        </div>
+      </header>
+      <div class="content-wrapper">
+        <!-- CONTACT -->
+        <section id="contact" class="content">
+          <div class="row">
+            <h2>Contact</h2>
+            <div class="content-text">
+                <ul>
+                  <li>Email</li>
+                  <li><a href="mailto:jobs@scottpayne.com.au">jobs@scottpayne.com.au</a></li>
+                </ul>
+                <ul>
+                  <li>Phone</li>
+                  <li>+61 42 977 0305</li>
+                </ul>
+                  <ul class="location">
+                    <li>Location</li>
+                    <li>370 Caparra Rd<br>Caparra, 2429<br>NSW</p>
+                  </li>
+            </div>
+          </div>
+        </section>
+
+
+
+        
+          <section id="work-history">
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                      Work Experience
+                        <p>August 2018 to Present</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Senior Engineer</strong>
+                          at <strong>Envato</strong>
+                      </p>
+                      <p>Ruby Developer maintaining and leading the integration of in-house systems with third party payment and tax systems</p>
+                        <p class="highlight">Exposure to Event Sourced/Command Query Responsibility Segregation (ES/CQRS) architecture, maintaining and guiding the development of the ES/CQRS system responsible for handling subscription management</p>
+                        <p class="highlight">Lead the integration of a third party tax system with the legacy Marketplace app</p>
+                        <p class="highlight">Joint lead on introducing variable price points for subscriptions to the existing Elements service</p>
+                        <p class="highlight">Provided support to junior team members to help them grow</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>November 2014 to June 2017</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Senior Software Developer</strong>
+                          at <strong>Fairfax Media</strong>
+                      </p>
+                      <p>Starting as a senior software developer I ended up as dev lead for the Digital Subscriptions team. Our main responsibility was keeping the paywall up, maintaining the subscription portal and implementing initiatives from the business to help drive subscriptions</p>
+                        <p class="highlight">Being tech lead for a rewrite of the identity/access management (IAM) component to move from an in-house IAM system to a third party system provided by Gigya. The team successfully migrated the critical system responsible for paywall and login for the major mastheads (Sydney Morning Herald, The Age, Financial Review) under a tight deadline</p>
+                        <p class="highlight">Acting as dev lead for the team, helping facilitate our agile process as well as translating business requirements into development stories and tasks</p>
+                        <p class="highlight">Designing and developing a greenfields node.js app to act as a server-side meter for counting Google AMP article views</p>
+                        <p class="highlight">Working on the team migrating Financial Review subscription data from Think to Zuora, performing data analysis as well as building and maintaining ETL tools written in Python and Ruby</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>November 2012 to November 2014</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong></strong>
+                          at <strong>Freelance Developer</strong>
+                      </p>
+                      <p>Worked in a freelance capacity for clients as a web developer, dividing my time between Ruby on Rails and Drupal projects. I&#x27;ve had to manage time across multiple projects, manage clients with changing expectations while keeping them focussed on the original scope, perform analysis and design functions, and manage deployment and configuration management with Chef and Amazon EC2.</p>
+                        <p class="highlight">*iDesignOnline*: JavaScript frontend with a Rails 3.2 backend, with communication done through a JSON API. Duties involved: working on the Rails backend; managing deployment to the AWS setup using ElasticBeanstalk via Ruby scripting using Thor and the AWS API; and implementing a JavaScript interface to allow admins to graphically manage a small subset of data via markers on a floorplan</p>
+                        <p class="highlight">Briefly involved in the inception of another Rails 3.2 project for a charity crowdsourcing platform as lead developer</p>
+                        <p class="highlight">*Seekki.com*: a Drupal 7 responsive website allowing people to anonymously correspond when finding lost items. My role was as a full stack developer, implementing custom Drupal modules, delivering the responsive front end and managing deployments</p>
+                        <p class="highlight">Other Drupal 7 projects exposing me to: delivering responsive websites using tools such as Sass and SingularityGS; e-Commerce with UberCart and Drupal Commerce; Paypal integration; CCBill integration; and assuring quality via Behat/Mink</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>May 2011 to December 2011</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Web Developer</strong>
+                          at <strong>Joyer</strong>
+                      </p>
+                        <p class="highlight">My primary duties were working with the Drupal content management system to deliver attractive and functional websites to our clients. This involved both front end and back end development, exposing me to PHP, MySQL, JavaScript and CSS</p>
+                        <p class="highlight">I was also the driving force behind bringing automated testing to the company, starting with Selenium and moving on to Behat, Mink and Sahi due to PHP compatibility, allowing us to write English language executable tests which clearly describe intention</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>February 2011 to May 2011</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Farm Labourer</strong>
+                          at <strong>Mulloon Creek Natural Farms</strong>
+                      </p>
+                      <p>Assisting the head gardener with general gardening duties. Performing farm labouring duties including brush cutting blackberries, planting and weeding trees, preparing produce for sale.</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>April 2007 to November 2008</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Software Developer</strong>
+                          at <strong>Internet Business Systems</strong>
+                      </p>
+                        <p class="highlight">IBS exposed me to an Agile environment on many projects and I had the opportunity to work on Ruby on Rails projects as well as Java. Quickly fell in love with Rails and Ruby and tried to involve myself as much on Rails projects as I could</p>
+                        <p class="highlight">Java technologies included Spring, Hibernate, ActiveMQ, and Eclipse</p>
+                        <p class="highlight">The culture valued pair programming and test driven design (TDD) and had projects involving small teams of 4 with some projects getting much larger</p>
+                        <p class="highlight">I also played a role in the technical team producing a website using custom Drupal modules and working with the customer team to produce the CMS for the site</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>July 2005 to March 2006</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Technical Testing Support</strong>
+                          at <strong>AGL</strong>
+                      </p>
+                      <p>Worked as technical support to the testing team on the National B2B project. Spent some time performing technical testing. Involved heavy use of Ant, Eclipse, XML, Java and Vitria BusinessWare. Tasks included: writing support modules for Ant in both Ant&#x27;s XML language and Java; setting up a regression testing and reporting framework for the Ant based test suite; and acting as a support tester during integration testing, market trials and user acceptance testing</p>
+                        <p class="highlight">Acting in a support role for the testing team, troubleshooting technical aspects of Ant based test scripting</p>
+                        <p class="highlight">Writing support modules for the scripts. This included writing Ant macros and targets using Ant&#x27;s XML based language and writing Ant tasks in Java</p>
+                        <p class="highlight">Setting up the regression framework, comprising Ant and Unix shell scripts combined custom Ant listeners and XSL transforms</p>
+                        <p class="highlight">Writing test cases and Ant test scripts. Included writing SQL scripts for testing a heavily database oriented application against the Oracle database</p>
+                        <p class="highlight">Acting as a support tester during integration testing, market trials, and user acceptance testing</p>
+                        <p class="highlight">Setting up testing environment on testers&#x27; PCs</p>
+                        <p class="highlight">Troubleshooting problems with testers&#x27; system test environment</p>
+                        <p class="highlight">Maintaining the system testing JMS and LDAP servers, limited to the occasional restart, and rebuilding of JMS destinations</p>
+                        <p class="highlight">Modifying existing third party open source Eclipse plugins to work with the latest version of Eclipse (3.1).</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>June 2005 to July 2005</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Motorcycle Courier</strong>
+                          at <strong>City Couriers</strong>
+                      </p>
+                      <p>Courier duties. Picking up and dropping off small to medium parcels around the Melbourne city area.</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>April 2004 to August 2004</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Software Architect</strong>
+                          at <strong>Public Image</strong>
+                      </p>
+                      <p>Required to design and develop web applications based around Java technology, including servlets and XML/XSLT within the Cocoon architecture. Other tasks included minor administration tasks and streamlining the build process. </p>
+                        <p class="highlight">Developed an online support system, building a chat server and client with Swing and web interfaces. Worked as a one-person team throughout the entire SDLC. Technologies included servlet development, JSPs and writing a Mac OS X installer for desktop component</p>
+                        <p class="highlight">Content Management System for manipulating XML files using Cocoon framework. Worked as a one-person team throughout the entire SDLC. Technologies included JavaScript, MVC architecture with XML/XSLT, Java, log4j.</p>
+                        <p class="highlight">In charge of coordinating builds and build dependencies among multiple projects using Ant build files.</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>March 2003 to July 2003</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Consultant</strong>
+                          at <strong>International Plant Name Index (IPNI)</strong>
+                      </p>
+                      <p>Undertook a senior analysis role, spending some time in development. Investigated integrating open source components into the IPNI database software. </p>
+                        <p class="highlight">Analysis and development role, modifying existing IPNI servlets to use the Apache Cocoon framework to ease the transition to an XML-based web delivery architecture, developing frontends in Velocity and XML/XSLT. Developed the build, testing and documentation processes using Ant and Maven</p>
+                        <p class="highlight">Analysis role investigating the integration of the Hibernate object-relational mapping framework with the existing Oracle database access libraries, including proof-of-concept development</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>June 2000 to March 2003</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Consultant</strong>
+                          at <strong>Australian Biological Resources Study</strong>
+                      </p>
+                      <p> Acted in a senior analysis/development capacity to provide web-based front ends to various biodiversity information. Maintained and enhanced the Platypus application, a comprehensive relational database program for biodiversity data used by taxonomers around the world. </p>
+                        <p class="highlight">Development of a Windows application using Visual Basic 6.0 against a Microsoft Access back end. Main duties on this project were enhancements to and maintenance of the application</p>
+                        <p class="highlight">Development of a web search facility using data exported from the above application. This consisted of creating and maintaining an Oracle data subset of the Access data, providing a facility for the users to upload the data through a custom graphical utility written in Perl and delivered on the web via Perl CGI scripts</p>
+                        <p class="highlight">Extended a web search facility using the Oracle XSQL servlet against an Oracle 9i database</p>
+                        <p class="highlight">Developed a number of web based applications to maintain floral names databases using the Apache Turbine/Torque framework, involving extensive Java programming and using Ant in the build process</p>
+                        <p class="highlight">Reverse engineered an Access database for redevelopment using Turbine/Torque against an Oracle 9i database and developing the Oracle data structure</p>
+                        <p class="highlight">Developed a facility to export data from Microsoft Access to XML for bulk upload into an Oracle 9i database</p>
+                  </div>
+                </div>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                        <p>March 1998 to February 2000</p>
+                  </div>
+                  <div class="content-text work-listing">
+                        <p>
+                          <strong>Consultant</strong>
+                          at <strong>Interim Technology Solutions Pty. Ltd.</strong>
+                      </p>
+                      <p>Acted mainly in an analyst/programmer role on a number of projects.</p>
+                        <p class="highlight">Personnel Licensing System for the Civil Aviation Safety Authority. Analysis role investigating and implementing new technologies. Development of web application using the NetDynamics application server and Java as part of a large team</p>
+                        <p class="highlight">Worked as part of a large team for the Racing Services Bureau developing an intranet application for administration and maintenance. This involved creating a three-tier application using Active Server Pages, Visual Basic components running with MS Transaction Server, all on top of on Oracle 8 database. Responsibilities included web development using MS Visual Interdev, MS FrontPage 98, and Active Server Pages using HTML and VBScript; development of application components using MS Transaction Server and MS Visual Basic; unit testing</p>
+                        <p class="highlight">Troubleshooting role as part of a small team, specifically investigating a problematic software component in Visual Basic</p>
+                        <p class="highlight">In house database system development on a small team in a development role</p>
+                        <p class="highlight">Application developer working on the Road Vehicle Certification System for the Federal Office of Road Safety. Analyst/programmer role, implementing electronic forms to user requirements. Some Visual Basic development</p>
+                  </div>
+                </div>
+              </section>
+          </section>
+
+              <section class="content">
+                <div class="row">
+                  <div class="content-cat big-text">
+                      Education
+                        <p>March 1995 to December 1997</p>
+                  </div>
+                  <div class="content-text work-listing education-listing">
+                        <p style="margin-top:0;" class="heading">Australian National University</p>
+                      <p class="highlight">
+                        <i>B. Information Technology (Software Engineering) </i>
+                      </p>
+                  </div>
+                </div>
+              </section>
+
+
+
+
+
+
+          <!-- PROFILES -->
+            <section class="content profiles">
+              <div class="row">
+                <div class="content-cat">
+                  Profiles
+                </div>
+                <div class="content-text profiles-listing">
+                  <ul>
+                        <li>
+                          <a href="http://www.linkedin.com/pub/scott-payne/3/815/469" target="_blank">
+                            linkedin
+                          </a>
+                        </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+
+      </div>
+  </article>
+</body>
+</html>
