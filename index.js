@@ -3,6 +3,7 @@ var Handlebars = require("handlebars");
 var parseISO = require('date-fns/parseISO')
 var format = require('date-fns/format')
 var sass = require('sass');
+var marked = require('marked');
 
 function render(resume) {
     // Load css and template
@@ -58,6 +59,10 @@ function render(resume) {
 
     Handlebars.registerHelper("formatDate", function(dateStr) {
         return format(parseISO(dateStr), "MMMM yyyy")
+    })
+
+    Handlebars.registerHelper("markdown", function(str) {
+        return new Handlebars.SafeString(marked.parseInline(str));
     })
     // Compile
     return Handlebars.compile(template)({
