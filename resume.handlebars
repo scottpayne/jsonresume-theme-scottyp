@@ -26,6 +26,9 @@
             {{#if label}}
               <p class="subtitle">{{label}}</p>
             {{/if}}
+            {{#if summary}}
+              <p class="summary">{{markdown summary}}</p>
+            {{/if}}
           </div>
         </div>
       </header>
@@ -34,31 +37,37 @@
           <h2>Contact</h2>
           <div class="content-text">
             {{#if website}}
-              <ul>
-                <li>Website</li>
-                <li>{{website}}</li>
-              </ul>
+              <h3 class="title">Website</h3>
+              <p class="value">{{website}}</p>
             {{/if}}
             {{#if email}}
-              <ul>
-                <li>Email</li>
-                <li><a href="mailto:{{email}}">{{email}}</a></li>
-              </ul>
+              <h3 class="title">Email</h3>
+              <p class="value"><a href="mailto:{{email}}">{{email}}</a></p>
             {{/if}}
             {{#if phone}}
-              <ul>
-                <li>Phone</li>
-                <li>{{phone}}</li>
-              </ul>
+              <h3 class="title">Phone</h3>
+              <p class="value">{{phone}}</p>
             {{/if}}
             {{#location}}
               {{#ifCond address '||' city}}
-                <ul class="location">
-                  <li>Address</li>
-                  <li>{{address}}<br>{{city}}, {{postalCode}}<br>{{region}}</p>
-                </li>
+                <h3 class="title">Address</h3>
+                <p class="value">{{address}}<br>{{city}}, {{postalCode}}<br>{{region}}</p>
               {{/ifCond}}
             {{/location}}
+            {{#if profiles.length}}
+              <h3 class="title">Socials</h3>
+              <ul class="value">
+                {{#each profiles}}
+                  {{#if network}}
+                    <li>
+                      <a href="{{url}}" target="_blank">
+                        {{network}}
+                      </a>
+                    </li>
+                  {{/if}}
+                {{/each}}
+              </ul>
+            {{/if}}
           </div>
         </section>
     {{/resume.basics}}
@@ -234,12 +243,12 @@
                     <p>{{date}}</p>
                   {{/if}}
                 </div>
-                <div class="content-text work-listing">
+                <div class="content-text">
                   {{#if awarder}}
                     <strong><p class="heading">{{awarder}}</p></strong>
                   {{/if}}
                   {{#if summary}}
-                    <p class="highlight">{{markdown summary}}</p>
+                    <p>{{markdown summary}}</p>
                   {{/if}}
                 </div>
               </div>
@@ -250,26 +259,6 @@
 
         {{#resume.basics}}
           <!-- PROFILES -->
-          {{#if profiles.length}}
-            <section id="profiles" class="content profiles">
-              <h2>Profiles</h2>
-              <div class="row">
-                <div class="content-text profiles-listing">
-                  <ul>
-                    {{#each profiles}}
-                      {{#if network}}
-                        <li>
-                          <a href="{{url}}" target="_blank">
-                            {{network}}
-                          </a>
-                        </li>
-                      {{/if}}
-                    {{/each}}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          {{/if}}
         {{/resume.basics}}
 
         {{#if resume.interests.length}}

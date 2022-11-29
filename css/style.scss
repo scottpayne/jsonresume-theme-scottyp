@@ -1,9 +1,16 @@
 @use 'reset';
 @use "work-listing";
 
-* {
+$headingIndent: 3em;
+$headingColour: #212121;
+$subheadingColour: #424242;
+
+$fontWeightNormal: 300;
+$fontWeightBold: 500;
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
   font-family: "Open Sans";
-  font-weight: 300;
+  font-weight: $fontWeightNormal;
 }
 
 body, html {
@@ -66,30 +73,36 @@ header {
   -webkit-animation: wiggle 0.7s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-.header-text {
-  margin-top:0.5em;
-  margin-left:1em;
-}
+header {
+  .header-text {
+    margin-top:0.5em;
+    margin-left: $headingIndent;
+    margin-right: $headingIndent;
+  }
 
-header p, header h1 {
-  text-align:center;
-  font-family: "Merriweather";
-  
-  margin:0;
-  
-  color: #212121;
+  h1, .subtitle {
+    text-align:center;
+    font-family: "Merriweather";
+    
+    margin:0;
+    
+    color: $headingColour;
+  }
+
+  .subtitle {
+    padding-top: .3em;
+    font-weight:$fontWeightBold;
+    color: $headingColour;
+  }
+
+  .summary {
+    text-align: justify;
+    padding: 0.5em 0;
+  }
 }
 
 .first-name {
    font-size: 1.05em;
-}
-
-.subtitle {
-  font-family: "Merriweather";
-  padding-top:.3em;
-  font-size:0.55em;
-  font-weight:500;
-  color: #424242;
 }
 
 /* Information */
@@ -138,10 +151,10 @@ header p, header h1 {
 section h2, .content-cat {
   font-family: "Merriweather";
   font-variant:small-caps;
-  font-weight:300;
+  font-weight:$fontWeightNormal;
   letter-spacing: 1px;
   
-  color: #212121;
+  color: $headingColour;
   
   font-size:0.975em;
   
@@ -157,7 +170,7 @@ h2 {
 .duration {
   font-family: "Merriweather";
   font-variant: small-caps;
-  font-weight: 300;
+  font-weight: $fontWeightNormal;
   
   font-size: 0.75em;
 
@@ -172,7 +185,7 @@ h3 {
 
 .content-cat p {
   font-size:0.55em;
-  font-weight:600;
+  font-weight:$fontWeightBold;
   
   margin-bottom:0;
 }
@@ -181,42 +194,20 @@ h3 {
   vertical-align:top;
 }
 
-#contact ul {
-  padding:0;
-  margin:0;
-  margin-top:0.15em;
-  
-  width:85%;
-  margin-left:1.5em;
-}
+#contact .content-text {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 0.5em;
+  padding: 0.5em 0 1em;
 
-#contact ul:last-child {
-  margin-bottom: 0.5em;
-}
+  .title {
+    grid-column: 1;
+    padding-left: $headingIndent;
+  }
 
-#contact ul li {
-  font-size:0.8em;
-  
-  display:inline-block;
-  vertical-align: top;
-  
-}
-
-#contact ul li:first-child {
-  width:35%;
-  
-  color: #424242;
-  
-  font-weight:600;
-}
-
-#contact ul li a {
-  text-decoration: none;
-  color: #0277bd;
-}
-
-#contact ul li a:hover {
-  color:#4fc3f7;
+  .value {
+    grid-column: 2;
+  }
 }
 
 #education > ul > li {
@@ -238,7 +229,7 @@ h3 {
 }
 
 .education-listing > .heading {
-  font-weight:600;
+  font-weight:$fontWeightBold;
   
   margin-top:0.75em;
   margin-left:2em;
@@ -254,12 +245,12 @@ h3 {
 
 .profiles-listing ul li, .profiles-listing ul li:first-child {
   width:32%;
-  font-weight: normal;
+  font-weight: $fontWeightNormal;
 }
 
 section#work-history section, #education li {
   page-break-inside: avoid;
-  padding-bottom: 0.75em;
+  padding-bottom: 1.2em;
 
   :last-child {
     padding-bottom: 0;
@@ -273,7 +264,7 @@ section.content.education-content > div > div.content-cat {
 div.content-text.skills-listing > p {
   font-family: "Open Sans";
   font-size:0.7em;
-  font-weight:400;
+  font-weight:$fontWeightNormal;
 
   margin-left: 2em;
   margin-top: 0.45em;
@@ -281,7 +272,7 @@ div.content-text.skills-listing > p {
 }
 
 div.content-text.skills-listing > p {
-  color:#212121;
+  color:$headingColour;
 }
 
 @media screen and (max-width: 600px) {
