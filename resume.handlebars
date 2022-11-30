@@ -60,9 +60,8 @@
                 {{#each profiles}}
                   {{#if network}}
                     <li>
-                      <a href="{{url}}" target="_blank">
-                        {{network}}
-                      </a>
+                      <a href="{{url}}" target="_blank">{{network}}</a>
+                      <span class="print-only"> - {{url}}</span>
                     </li>
                   {{/if}}
                 {{/each}}
