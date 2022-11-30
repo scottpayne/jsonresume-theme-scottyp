@@ -27,7 +27,7 @@
               <p class="subtitle">{{label}}</p>
             {{/if}}
             {{#if summary}}
-              <p class="summary">{{markdown summary}}</p>
+              <div class="summary">{{markdown summary}}</div>
             {{/if}}
           </div>
         </div>
@@ -118,12 +118,12 @@
                 {{/if}}
                   <div class="content-text work-listing">
                     {{#if summary}}
-                      <p>{{markdown summary}}</p>
+                      <div class="summary">{{markdown summary}}</div>
                     {{/if}}
                     {{#if highlights.length}}
                       <ul>
                       {{#each highlights}}
-                        <li class="highlight">{{markdown .}}</li>
+                        <li class="highlight">{{inlinemarkdown .}}</li>
                       {{/each}}
                       </ul>
                     {{/if}}
@@ -190,7 +190,7 @@
                   {{/if}}
                   {{#if summary}}
                     <p>
-                      {{markdown summary}}
+                      {{inlinemarkdown summary}}
                     </p>
                   {{/if}}
                   {{#if highlights.length}}
@@ -248,7 +248,7 @@
                     <strong><p class="heading">{{awarder}}</p></strong>
                   {{/if}}
                   {{#if summary}}
-                    <p>{{markdown summary}}</p>
+                    <p>{{inlinemarkdown summary}}</p>
                   {{/if}}
                 </div>
               </div>

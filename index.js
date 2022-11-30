@@ -62,6 +62,9 @@ function render(resume) {
     })
 
     Handlebars.registerHelper("markdown", function(str) {
+        return new Handlebars.SafeString(marked.parse(str));
+    })
+    Handlebars.registerHelper("inlinemarkdown", function(str) {
         return new Handlebars.SafeString(marked.parseInline(str));
     })
     // Compile

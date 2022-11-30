@@ -97,7 +97,10 @@ header {
 
   .summary {
     text-align: justify;
-    padding: 0.5em 0;
+
+    p {
+      margin: 0.5em 0;
+    }
   }
 }
 
